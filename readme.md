@@ -19,3 +19,15 @@ Promover a troca de conhecimento em programação, facilitar a revisão de exerc
 
 ### Área do Usuário
 - Usuário poderá editar seu perfil, que será exibido para outros usuários.
+
+## Cliente ou Público alvo
+- Os clientes principais seriam escolas. Que utilizaria desta tecnologia para compartilhar códigos entre si, ou tirar dúvidas.
+
+## Tecnologias
+- O projeto utilizará a tecnologia React para seu front-end.
+
+## Características / Diferenciais
+- Interface simples e intuitiva, voltada para uso educacional.
+- Suporte a múltiplas linguagens de programação.
+- Sistema de comentários para os posts.
+- Perfis personalizados para usuários.
