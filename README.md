@@ -12,7 +12,7 @@ Promover a troca de conhecimento em programação, facilitar a revisão de exerc
 ## Estrutura do Projeto
 
 ### Área de Login
-- Usuário usará esta tela para realizar login na plataforma. 
+- Usuário usará esta tela para realizar login na plataforma.
 
 ### Área de Postagens
 - Usuário poderá postar códigos, onde outros usuários podem visualizar e responder com comentários ou melhorias.
@@ -25,9 +25,11 @@ Promover a troca de conhecimento em programação, facilitar a revisão de exerc
 
 ## Tecnologias
 - O projeto utilizará a tecnologia React para seu front-end.
+- Para iniciar o projeto localmente, execute `yarn run dev` no root do projeto.
 
 ## Características / Diferenciais
 - Interface simples e intuitiva, voltada para uso educacional.
 - Suporte a múltiplas linguagens de programação.
 - Sistema de comentários para os posts.
 - Perfis personalizados para usuários.
+
