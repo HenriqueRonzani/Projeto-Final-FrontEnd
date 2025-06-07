@@ -9,6 +9,9 @@
 .bg-primary {
   background-color: #2563eb;
 }
+.bg-primary:hover {
+  background-color: #1d4ed8;
+}
 .bg-secondary {
   background-color: #134e4a;
 }
