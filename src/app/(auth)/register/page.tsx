@@ -2,6 +2,8 @@
 
 import Button from "@/components/Form/Button";
 import TextInput from "@/components/Form/Input";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Register() {
@@ -10,6 +12,8 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,6 +26,8 @@ export default function Register() {
     setError("");
     console.log("Dados registrados:", { email, role, password });
     alert("Cadastro feito com sucesso!");
+
+    router.push("/"); 
   };
 
   return (
@@ -78,7 +84,13 @@ export default function Register() {
 
           <Button type="submit">Registrar</Button>
         </form>
-        
+
+        <p className="text-sm text-center mt-4">
+          Já tem uma conta?{" "}
+          <Link href="/login" className="text-blue-600 hover:underline">
+            Entrar
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -1,14 +1,23 @@
 "use client";
+
 import Button from "@/components/Form/Button";
 import TextInput from "@/components/Form/Input";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function Register() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
+  const router = useRouter();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    console.log("Login realizado:", { email, password });
+    alert("Login feito com sucesso!");
+    router.push("/"); 
   };
 
   return (
@@ -36,8 +45,14 @@ export default function Register() {
           />
 
           <Button type="submit">Login</Button>
-
         </form>
+
+        <p className="text-sm text-center mt-4">
+          Não possui uma conta?{" "}
+          <Link href="/register" className="text-blue-600 hover:underline">
+            Registre-se
+          </Link>
+        </p>
       </div>
     </div>
   );
