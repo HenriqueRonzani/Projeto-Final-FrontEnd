@@ -1,0 +1,20 @@
+{
+  "users": [
+    {"id" : 1, "name": "Teste1", "email": "teste1@teste.com"},
+    {"id" : 2, "name": "Teste2", "email": "teste2@teste.com"},
+    {"id" : 3, "name": "Teste3", "email": "teste3@teste.com"},
+    {"id" : 4, "name": "Teste4", "email": "teste4@teste.com"}
+  ],
+  "posts": [
+    {"id" : 1, "title": "Post 1", "content": "Content of post 1", "userId": 1},
+    {"id" : 2, "title": "Post 2", "content": "Content of post 2", "userId": 2},
+    {"id" : 3, "title": "Post 3", "content": "Content of post 3", "userId": 3},
+    {"id" : 4, "title": "Post 4", "content": "Content of post 4", "userId": 4}
+  ],
+    "comments": [
+      {"id" : 1, "content": "Comment 1", "postId": 1, "userId": 2},
+      {"id" : 2, "content": "Comment 2", "postId": 1, "userId": 3},
+      {"id" : 3, "content": "Comment 3", "postId": 2, "userId": 1},
+      {"id" : 4, "content": "Comment 4", "postId": 3, "userId": 4}
+  ]
+}
