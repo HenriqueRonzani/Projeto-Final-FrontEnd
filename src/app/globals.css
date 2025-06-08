@@ -52,4 +52,10 @@ body {
   width: 100vw;
   background: #fafafa;
   color: #353535;
+  overflow: hidden;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #4A5568 #1E293B;
 }

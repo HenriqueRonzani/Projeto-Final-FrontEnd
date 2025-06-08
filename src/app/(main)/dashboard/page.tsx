@@ -1,15 +1,13 @@
-import DashboardCard from "@/components/DashboardCard/DashboardCard";
+import Surface from "@/components/Surface/Surface";
 
 export default function Dashboard() {
     return (
         // Full viewport
         <div className={'w-full h-full flex'}>
-            <div className={'m-auto h-1/2 w-1/2 flex'}>
-                <DashboardCard title={'Dashboard'}>
-                    {/*TODO: Implementar features no dashboard*/}
-                    <p className={'text-xl'}>Seja bem vindo</p>
-                </DashboardCard>
-            </div>
+            <Surface title={'Dashboard'}>
+                {/*TODO: Implementar features no dashboard*/}
+                <p className={'text-xl'}>Seja bem vindo</p>
+            </Surface>
         </div>
     )
 }
