@@ -11,10 +11,10 @@ export interface Post {
     title: string;
     content: string;
     userId: number;
+    publishedAt: string;
     user?: User;
     comments?: Comment[];
 }
-
 
 export type Comment = {
     id: number;

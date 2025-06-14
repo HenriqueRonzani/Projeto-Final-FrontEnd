@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 
-import Input from '@/components/Form/Input';
+import Input from '@/components/Form/TextInput';
 import Button from '@/components/Form/Button';
 import Surface from '@/components/Surface/Surface';
 
@@ -19,7 +19,7 @@ export default function EditProfilePage() {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
   };
-  
+
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
@@ -28,7 +28,7 @@ export default function EditProfilePage() {
   return (
     <Surface className="max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-2">Editar Perfil</h1>
-      
+
       <form className="space-y-2">
 
         <Input

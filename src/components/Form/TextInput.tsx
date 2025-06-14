@@ -10,6 +10,7 @@ type TextInputProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
   required?: boolean;
+  className?: string;
 };
 
 export default function TextInput({
@@ -21,6 +22,7 @@ export default function TextInput({
   onChange,
   error,
   required = false,
+  className = "",
 }: TextInputProps) {
   return (
     <div className={"mb-4"}>
@@ -34,9 +36,9 @@ export default function TextInput({
         onChange={onChange}
         placeholder={placeholder}
         required={required}
-        className={`w-full border ${
+        className={`w-full border bg-slate-900 ${
           error ? "border-red-500" : "border-gray-300"
-        } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+        } rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500` + ' ' + className}
       />
       {error && <p className={"text-red-600 text-sm mt-1"}>{error}</p>}
     </div>

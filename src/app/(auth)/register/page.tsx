@@ -2,14 +2,14 @@
 
 
 import Button from "@/components/Form/Button";
-import TextInput from "@/components/Form/Input";
+import TextInput from "@/components/Form/TextInput";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { handleRequestError } from "@/lib/toast";
 import { registerUser } from "@/services/userService";
 import Cookies from "js-cookie";
-import SelectInput from "@/components/Form/select";
+import SelectInput from "@/components/Form/Select";
 
 export default function Register() {
   const [email, setEmail] = useState("");

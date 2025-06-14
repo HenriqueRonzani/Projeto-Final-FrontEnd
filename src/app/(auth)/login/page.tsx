@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/Form/Button";
-import TextInput from "@/components/Form/Input";
+import TextInput from "@/components/Form/TextInput";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
