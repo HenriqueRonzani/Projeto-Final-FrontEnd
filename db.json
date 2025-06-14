@@ -3,22 +3,23 @@
     {
       "id": "1",
       "name": "Teste1",
-      "email": "teste1@teste.com"
+      "role": "student",
+      "email": "teste1@teste.com",
+      "password": "123"
     },
     {
-      "id": "2",
-      "name": "Teste2",
-      "email": "teste2@teste.com"
+      "id": "20df",
+      "name": "henrique",
+      "role": "teacher",
+      "email": "teste2@teste.com",
+      "password": "123123"
     },
     {
-      "id": "3",
-      "name": "Teste3",
-      "email": "teste3@teste.com"
-    },
-    {
-      "id": "4",
-      "name": "Teste4",
-      "email": "teste4@teste.com"
+      "id": "383f",
+      "name": "henrique",
+      "role": "student",
+      "email": "teste3@teste.com",
+      "password": "123123"
     }
   ],
   "posts": [
@@ -73,22 +74,28 @@
       "userId": 4
     },
     {
-      "id": 1749392422935,
+      "id": "1749392422935",
       "postId": "1",
       "content": "teste",
       "userId": 1
     },
     {
-      "id": 1749392426075,
+      "id": "1749392426075",
       "postId": "1",
       "content": "teste",
       "userId": 1
     },
     {
-      "id": 1749392453305,
+      "id": "1749392453305",
       "postId": "1",
       "content": "aaaaaaaaaaaaaaaaaaa",
       "userId": 1
+    },
+    {
+      "id": 1749863137100,
+      "postId": "1",
+      "content": "henrique\n",
+      "userId": "1"
     }
   ]
 }

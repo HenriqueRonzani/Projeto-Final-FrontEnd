@@ -4,30 +4,41 @@ import Button from "@/components/Form/Button";
 import TextInput from "@/components/Form/Input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
+import {handleRequestError} from "@/lib/toast";
+import {registerUser} from "@/services/userService";
+import Cookies from "js-cookie";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [name, setName] = useState("");
 
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     if (password !== confirmPassword) {
-      setError("As senhas não coincidem.");
+      handleRequestError(new Error("Senhas não coincidem"));
       return;
     }
 
-    setError("");
-    console.log("Dados registrados:", { email, role, password });
-    alert("Cadastro feito com sucesso!");
+    try {
+      const user = await registerUser(name, role, email, password);
 
-    router.push("/"); 
+      if (user) {
+        Cookies.set('user_email', user.email, { expires: 7 });
+        router.push("/");
+        return;
+      }
+
+      handleRequestError(new Error("Erro ao registrar usuário"));
+    } catch (error) {
+      handleRequestError(error);
+    }
   };
 
   return (
@@ -43,6 +54,17 @@ export default function Register() {
             placeholder="nome@exemplo.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required={true}
+          />
+
+          <TextInput
+            id="name"
+            label="Nome"
+            type="text"
+            placeholder="Seu nome..."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required={true}
           />
 
           <div className={"mb-4"}>
@@ -54,12 +76,13 @@ export default function Register() {
               value={role}
               onChange={(e) => setRole(e.target.value)}
               className={"w-full border border-gray-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"}
+              required={true}
             >
               <option value="">Selecione um tipo</option>
-              <option value="estudante">Estudante</option>
-              <option value="professor">Professor</option>
-              <option value="diretor">Diretor</option>
-              <option value="coordenador">Coordenador</option>
+              <option value="student">Estudante</option>
+              <option value="teacher">Professor</option>
+              <option value="principal">Diretor</option>
+              <option value="coordinator">Coordenador</option>
             </select>
           </div>
 
@@ -70,6 +93,7 @@ export default function Register() {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required={true}
           />
 
           <TextInput
@@ -79,7 +103,7 @@ export default function Register() {
             placeholder="••••••••"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            error={error}
+            required={true}
           />
 
           <Button type="submit">Registrar</Button>

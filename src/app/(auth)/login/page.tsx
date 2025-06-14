@@ -4,7 +4,10 @@ import Button from "@/components/Form/Button";
 import TextInput from "@/components/Form/Input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
+import {loginUser} from "@/services/userService";
+import {handleRequestError} from "@/lib/toast";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,12 +15,22 @@ export default function Login() {
 
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    console.log("Login realizado:", { email, password });
-    alert("Login feito com sucesso!");
-    router.push("/"); 
+    try {
+      const user = await loginUser(email, password);
+
+      if (user) {
+        Cookies.set('user_email', user.email, { expires: 7 });
+        router.push("/");
+        return;
+      }
+
+      handleRequestError(new Error("Usuário não encontrado ou senha incorreta"));
+    } catch (error) {
+      handleRequestError(error);
+    }
   };
 
   return (
@@ -33,6 +46,7 @@ export default function Login() {
             placeholder="nome@exemplo.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required={true}
           />
 
           <TextInput
@@ -42,6 +56,7 @@ export default function Login() {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required={true}
           />
 
           <Button type="submit">Login</Button>
