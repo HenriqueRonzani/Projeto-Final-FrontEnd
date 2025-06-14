@@ -1,13 +1,15 @@
 "use client";
 
+
 import Button from "@/components/Form/Button";
 import TextInput from "@/components/Form/Input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import {handleRequestError} from "@/lib/toast";
-import {registerUser} from "@/services/userService";
+import { handleRequestError } from "@/lib/toast";
+import { registerUser } from "@/services/userService";
 import Cookies from "js-cookie";
+import SelectInput from "@/components/Form/select";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -67,24 +69,20 @@ export default function Register() {
             required={true}
           />
 
-          <div className={"mb-4"}>
-            <label htmlFor="role" className={"block text-sm font-medium mb-1"}>
-              Tipo
-            </label>
-            <select
-              id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className={"w-full border border-gray-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"}
-              required={true}
-            >
-              <option value="">Selecione um tipo</option>
-              <option value="student">Estudante</option>
-              <option value="teacher">Professor</option>
-              <option value="principal">Diretor</option>
-              <option value="coordinator">Coordenador</option>
-            </select>
-          </div>
+          <SelectInput
+            id="role"
+            label="Tipo"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required={true}
+            options={[
+              { value: "student", caption: "Estudante" },
+              { value: "teacher", caption: "Professor" },
+              { value: "principal", caption: "Diretor" },
+              { value: "coordinator", caption: "Coordenador" },
+            ]}
+          />
+
 
           <TextInput
             id="password"
