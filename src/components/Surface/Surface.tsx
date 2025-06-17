@@ -1,32 +1,43 @@
 import React from "react";
 
 interface DashboardCard {
-  title?: string,
-  className?: string,
+  title?: string;
+  className?: string;
   children: React.ReactNode;
   headerContent?: React.ReactNode;
 }
 
-export default function Surface ({ title, className = '', children, headerContent}: DashboardCard) {
+export default function Surface({
+  title,
+  className = "",
+  children,
+  headerContent,
+}: DashboardCard) {
   return (
-    <div
+    <section
       className={
-        'bg-surface rounded-2xl ' +
-        'flex flex-col gap-10 ' +
-        'm-auto p-10 ' +
-        'w-11/12 h-11/12 ' +
-        'overflow-x-hidden overflow-y-auto' +
-        ' ' + className
+        "bg-white dark:bg-gray-900 rounded-2xl shadow-md " +
+        "flex flex-col gap-8 " +
+        "m-auto p-8 md:p-10 " +
+        "w-full max-w-7xl h-full max-h-[90vh] " +
+        "overflow-x-hidden overflow-y-auto " +
+        className
       }
     >
-      <div className="flex justify-between items-center">
-        { title && <h3 className={'text-7xl'} >{ title }</h3> }
+      {(title || headerContent) && (
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          {title && (
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white break-words">
+              {title}
+            </h1>
+          )}
+          {headerContent}
+        </div>
+      )}
 
-        {headerContent}
+      <div className="flex-1 w-full">
+        {children}
       </div>
-      <div className={'h-full'}>
-        { children }
-      </div>
-    </div>
-  )
+    </section>
+  );
 }

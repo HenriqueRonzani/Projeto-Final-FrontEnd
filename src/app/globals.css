@@ -43,6 +43,10 @@
     --foreground: #ededed;
   }
 }
+*{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
 
 body {
   background: var(--background);
