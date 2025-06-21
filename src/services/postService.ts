@@ -1,6 +1,7 @@
 import axios from "axios";
 import {Post} from "@/types";
 import {getUserByEmail} from "@/services/userService";
+import {getCommentsByPostId} from "@/services/commentService";
 
 const API_BASE_URL = 'http://localhost:3001';
 
@@ -21,7 +22,6 @@ export async function getPostById(id: number): Promise<Post> {
   const response = await axios.get(API_BASE_URL + '/posts/' + id, {
     params: {
       _expand: 'user',
-      _embed: 'comments',
     }
   });
 
@@ -30,6 +30,12 @@ export async function getPostById(id: number): Promise<Post> {
   }
 
   return response.data;
+}
+
+export async function getPostWithCommentsById(id: number): Promise<Post> {
+  const post = await getPostById(id);
+  post.comments = await getCommentsByPostId(id);
+  return post;
 }
 
 export async function createPost(title: string, content: string, email: string): Promise<Post> {

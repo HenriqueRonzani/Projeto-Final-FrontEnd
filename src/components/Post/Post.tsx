@@ -38,14 +38,12 @@ export default function PostComponent({ post, disableRedirect = false }: PostCom
       </div>
 
       <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
-        {!disableRedirect ? (
+        {!disableRedirect && (
           <Link href={`/posts/${post.id}`} className="text-blue-600 hover:underline">
             Ver comentários
           </Link>
-        ) : (
-          <span className="text-gray-400">Comentários</span>
         )}
-        <span>📅 {postDate}</span>
+        <span className={'ml-auto'}>📅 {postDate}</span>
       </div>
     </div>
   );

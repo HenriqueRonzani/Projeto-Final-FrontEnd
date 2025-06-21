@@ -21,5 +21,6 @@ export type Comment = {
     postId: number;
     content: string;
     userId: number;
+    publishedAt: string;
     user?: User;
 }

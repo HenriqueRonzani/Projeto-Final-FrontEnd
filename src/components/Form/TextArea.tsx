@@ -19,10 +19,14 @@ export default function TextArea({
   ...rest
 }: TextAreaProps) {
   return (
-    <div className={"mb-4"}>
-      <label htmlFor={id} className={"block text-sm font-medium mb-1"}>
-        {label}
-      </label>
+    <div className={""}>
+      {
+        label && (
+          <label htmlFor={id} className={"block text-sm font-medium mb-1"}>
+            {label}
+          </label>
+        )
+      }
       <textarea
         id={id}
         required={required}

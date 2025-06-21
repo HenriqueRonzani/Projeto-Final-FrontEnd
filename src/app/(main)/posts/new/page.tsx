@@ -35,26 +35,24 @@ export default function NewPostPage() {
   }
   return (
     <Surface title={"Novo Post"}>
-      <form className={'h-full'} onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-5">
-          <TextInput
-            id={'title'}
-            label={'Título'}
-            type={'text'}
-            placeholder={'Digite o título do post'}
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <TextArea
-            id={'content'}
-            label={'Conteúdo'}
-            placeholder={''}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className={'h-100'}
-            rows={30}
-          />
-        </div>
+      <form className={'h-full flex flex-col gap-5'} onSubmit={handleSubmit}>
+        <TextInput
+          id={'title'}
+          label={'Título'}
+          type={'text'}
+          placeholder={'Digite o título do post'}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TextArea
+          id={'content'}
+          label={'Conteúdo'}
+          placeholder={''}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className={'h-100'}
+          rows={30}
+        />
         <div className={'w-40'}>
           <Button type="submit">Criar Post</Button>
         </div>

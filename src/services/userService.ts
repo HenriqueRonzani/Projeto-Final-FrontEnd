@@ -47,7 +47,8 @@ export async function loginUser (email: string, password: string): Promise<User 
     throw new Error('Usuário não encontrado ou senha incorreta');
   }
 
-  if (users[0].password !== password) {
+  // Converte pra string para evitar problemas de comparação
+  if (`${users[0].password}` !== `${password}`) {
     throw new Error('Usuário não encontrado ou senha incorreta');
   }
 
