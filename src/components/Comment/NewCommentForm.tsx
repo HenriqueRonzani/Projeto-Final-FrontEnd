@@ -44,8 +44,10 @@ export default function NewCommentForm({postId}: { postId: number }) {
         onChange={(e) => setContent(e.target.value)}
         rows={5}
       />
-      <div className={'w-40'}>
+      <div className="flex justify-end mt-2 gap-2">
+        <div className={'w-40'}>
         <Button type="submit">Comentar</Button>
+      </div>
       </div>
     </form>
   )
