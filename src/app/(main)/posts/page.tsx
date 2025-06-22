@@ -1,28 +1,26 @@
 import { getPosts } from "@/services/postService";
 import { Post } from "@/types";
-import Surface from "@/components/Surface/Surface";
-import PostComponent from "@/components/Post/Post";
-import Button from "@/components/Form/Button";
 import { handleRequestError } from "@/lib/toast";
+import {cookies} from "next/headers";
+import PostsContainer from "@/components/Post/PostsContainer";
 import NewPostButton from "@/components/Post/NewPostButton";
+import Surface from "@/components/Surface/Surface";
+
 
 export default async function PostPage() {
   let posts: Post[] = [];
 
   try {
-    posts = await getPosts();
+    const cookieStore = await cookies();
+    const userEmail = cookieStore.get('user_email')?.value;
+    posts = await getPosts({ param: "userId", userEmail: userEmail });
   } catch (e) {
     handleRequestError(e);
   }
 
   return (
-    <Surface title="Posts" headerContent={<NewPostButton />}>
-      <div className="flex flex-col gap-6">
-        {posts.map((post) => (
-          <PostComponent key={post.id} post={post} />
-        ))}
-      </div>
+    <Surface title={'Meus Posts'} headerContent={<NewPostButton />}>
+      <PostsContainer posts={posts}  />
     </Surface>
-
   );
 }

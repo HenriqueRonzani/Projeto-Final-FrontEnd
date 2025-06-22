@@ -5,11 +5,23 @@ import {getCommentsByPostId} from "@/services/commentService";
 
 const API_BASE_URL = 'http://localhost:3001';
 
-export async function getPosts(): Promise<Post[]> {
-  const response = await axios.get(API_BASE_URL + '/posts', {
-    params: {
-      _expand: 'user',
+export async function getPosts({param, userEmail} : {param?: string, userEmail?: string} = {}): Promise<Post[]> {
+  const params: { [key: string]: string | number } = {
+    _expand: 'user',
+  };
+
+  if (param && userEmail) {
+    const user = await getUserByEmail(userEmail);
+    const userId = user ? user[0].id : null;
+
+    if (!userId) {
+      throw new Error('Usuário não encontrado');
     }
+
+    params[param] = userId;
+  }
+  const response = await axios.get(API_BASE_URL + '/posts', {
+    params
   });
   if (response.status !== 200) {
     throw new Error('Erro ao buscar posts');

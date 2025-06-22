@@ -1,13 +1,17 @@
-import {getPostWithCommentsById} from "@/services/postService";
+import {getPosts, getPostWithCommentsById} from "@/services/postService";
 import Surface from "@/components/Surface/Surface";
 import PostComponent from "@/components/Post/Post";
 import CommentComponent from "@/components/Comment/CommentComponent";
 import NewCommentForm from "@/components/Comment/NewCommentForm";
+import {cookies} from "next/headers";
 
 export default async function PostPage({params}: { params: { id: string } }) {
   try {
     const numericId = parseInt(params.id, 10);
     const post = await getPostWithCommentsById(numericId);
+
+    const cookieStore = await cookies();
+    const userEmail = cookieStore.get('user_email')?.value;
 
     if (!post) {
       return (
@@ -26,7 +30,7 @@ export default async function PostPage({params}: { params: { id: string } }) {
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-5">
             <div>
-              <PostComponent post={post} disableRedirect={true}/>
+              <PostComponent userEmail={userEmail} post={post} disableRedirect={true}/>
             </div>
           </div>
 
