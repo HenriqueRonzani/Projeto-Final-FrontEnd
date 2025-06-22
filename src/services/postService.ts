@@ -8,6 +8,8 @@ const API_BASE_URL = 'http://localhost:3001';
 export async function getPosts({param, userEmail} : {param?: string, userEmail?: string} = {}): Promise<Post[]> {
   const params: { [key: string]: string | number } = {
     _expand: 'user',
+    _sort: 'publishedAt',
+    _order: 'desc',
   };
 
   if (param && userEmail) {
@@ -70,4 +72,24 @@ export async function createPost(title: string, content: string, email: string):
   }
 
   return response.data;
+}
+
+export async function updatePost(id: number, data: Post): Promise<Post> {
+  const response = await axios.put(API_BASE_URL + '/posts/' + id,
+    data
+  );
+
+  if (response.status !== 200) {
+    throw new Error('Erro ao atualizar post');
+  }
+
+  return response.data;
+}
+
+export async function deletePost(id: number): Promise<void> {
+  const response = await axios.delete(API_BASE_URL + '/posts/' + id);
+
+  if (response.status !== 200) {
+    throw new Error('Erro ao deletar post');
+  }
 }

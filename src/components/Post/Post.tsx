@@ -24,16 +24,27 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
     </div>
   );
 
-
   return (
     <div className="p-5 flex flex-col bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition-all gap-2">
-      {!disableRedirect ? (
-        <Link href={`/posts/${post.id}`} className="hover:underline">
-          {PostHeader}
-        </Link>
-      ) : (
-        PostHeader
-      )}
+      <div className='flex flex-row justify-between'>
+        {!disableRedirect ? (
+          <Link href={`/posts/${post.id}`} className="hover:underline">
+            {PostHeader}
+          </Link>
+        ) : (
+          PostHeader
+        )}
+        {
+          post.user?.email === userEmail && (
+            <div>
+              <Link href={`/posts/${post.id}/edit`} className="text-blue-600 hover:underline">
+                Editar
+              </Link>
+            </div>
+          )
+        }
+      </div>
+
 
       <div className="bg-background rounded-2xl p-4 text-gray-700 dark:text-gray-300">
         <p className="whitespace-pre-line">{post.content}</p>

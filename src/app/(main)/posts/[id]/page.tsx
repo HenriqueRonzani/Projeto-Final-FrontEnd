@@ -1,4 +1,4 @@
-import {getPosts, getPostWithCommentsById} from "@/services/postService";
+import {getPostWithCommentsById} from "@/services/postService";
 import Surface from "@/components/Surface/Surface";
 import PostComponent from "@/components/Post/Post";
 import CommentComponent from "@/components/Comment/CommentComponent";
