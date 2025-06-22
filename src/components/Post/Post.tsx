@@ -2,7 +2,9 @@
 import { Post } from "@/types";
 import Link from "next/link";
 import DeletePostModal from "@/components/Post/DeleteModal";
-import {useState} from "react";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 interface PostComponentProps {
   userEmail: string | undefined;
@@ -18,14 +20,9 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
     day: "2-digit",
   });
 
-  const PostHeader = (
-    <div className="flex flex-col gap-1">
-      <span className="text-2xl font-bold text-gray-900 dark:text-white">{post.title}</span>
-      <span className="text-sm text-gray-500">
-        Publicado por: { post.user?.email === userEmail ? 'Você' : post.user?.name ?? post.user?.id }
-      </span>
-    </div>
-  );
+  const [Likes, setLike] = useState(0);
+  const [Dislikes, setDislike] = useState(0);
+  const [userVote, setUserVote] = useState<null | 'like' | 'dislike'>(null);
 
   const openDeleteModal = () => {
     setIsDeleting(true);
@@ -34,6 +31,37 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
   const closeDeleteModal = () => {
     setIsDeleting(false);
   };
+
+  const handleLike = () => {
+    if (userVote === null) {
+      setLike(prev => prev + 1);
+      setUserVote('like');
+    } else if (userVote === 'dislike') {
+      setDislike(prev => prev - 1);
+      setLike(prev => prev + 1);
+      setUserVote('like');
+    }
+  };
+
+  const handleDislike = () => {
+    if (userVote === null) {
+      setDislike(prev => prev + 1);
+      setUserVote('dislike');
+    } else if (userVote === 'like') {
+      setLike(prev => prev - 1);
+      setDislike(prev => prev + 1);
+      setUserVote('dislike');
+    }
+  };
+
+  const PostHeader = (
+    <div className="flex flex-col gap-1">
+      <span className="text-2xl font-bold text-gray-900 dark:text-white">{post.title}</span>
+      <span className="text-sm text-gray-500">
+        Publicado por: {post.user?.email === userEmail ? 'Você' : post.user?.name ?? post.user?.id}
+      </span>
+    </div>
+  );
 
   return (
     <div className="p-5 flex flex-col bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition-all gap-2">
@@ -60,7 +88,6 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
         }
       </div>
 
-
       <div className="bg-background rounded-2xl p-4 text-gray-700 dark:text-gray-300">
         <p className="whitespace-pre-line">{post.content}</p>
       </div>
@@ -71,6 +98,31 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
             Ver comentários
           </Link>
         )}
+
+        <div className="flex items-center gap-4 ml-4">
+          <div className="flex items-center gap-1">
+            <button 
+              onClick={handleLike} 
+              className={`hover:underline flex items-center gap-1 ${userVote === 'like' ? 'text-blue-400' : 'text-blue-600'}`}
+            >
+              <FontAwesomeIcon icon={faThumbsUp} />
+              <span>Like</span>
+            </button>
+            <span>{Likes}</span>
+          </div>
+
+          <div className="flex items-center gap-1">
+            <button 
+              onClick={handleDislike} 
+              className={`hover:underline flex items-center gap-1 ${userVote === 'dislike' ? 'text-red-400' : 'text-red-600'}`}
+            >
+              <FontAwesomeIcon icon={faThumbsDown} />
+              <span>Dislike</span>
+            </button>
+            <span>{Dislikes}</span>
+          </div>
+        </div>
+
         <span className={'ml-auto'}>📅 {postDate}</span>
       </div>
     </div>
