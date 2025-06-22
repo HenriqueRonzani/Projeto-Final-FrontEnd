@@ -1,6 +1,8 @@
 'use client';
 import { Post } from "@/types";
 import Link from "next/link";
+import DeletePostModal from "@/components/Post/DeleteModal";
+import {useState} from "react";
 
 interface PostComponentProps {
   userEmail: string | undefined;
@@ -9,6 +11,7 @@ interface PostComponentProps {
 }
 
 export default function PostComponent({ userEmail, post, disableRedirect = false }: PostComponentProps) {
+  const [isDeleting, setIsDeleting] = useState(false);
   const postDate = new Date(post.publishedAt).toLocaleDateString("pt-BR", {
     year: "numeric",
     month: "2-digit",
@@ -24,6 +27,14 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
     </div>
   );
 
+  const openDeleteModal = () => {
+    setIsDeleting(true);
+  };
+
+  const closeDeleteModal = () => {
+    setIsDeleting(false);
+  };
+
   return (
     <div className="p-5 flex flex-col bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition-all gap-2">
       <div className='flex flex-row justify-between'>
@@ -36,10 +47,14 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
         )}
         {
           post.user?.email === userEmail && (
-            <div>
+            <div className='flex flex-row gap-2 items-start'>
               <Link href={`/posts/${post.id}/edit`} className="text-blue-600 hover:underline">
                 Editar
               </Link>
+              <span className="text-blue-600 hover:underline" onClick={openDeleteModal}>
+                Excluir
+              </span>
+              <DeletePostModal isOpen={isDeleting} onClose={closeDeleteModal} postId={post.id} />
             </div>
           )
         }
