@@ -1,13 +1,13 @@
 import Surface from "@/components/Surface/Surface";
 import PostComponent from "@/components/Post/Post";
 import {Post} from "@/types";
-import Cookies from "js-cookie";
+import {cookies} from "next/headers";
 
 interface PostsContainerInterface {
   posts: Post[],
 }
 
-export default function PostsContainer({posts} : PostsContainerInterface) {
+export default async function PostsContainer({posts} : PostsContainerInterface) {
   if (posts.length === 0) {
     return <Surface title="Nenhum Post Encontrado">
       <div className="flex items-center justify-center h-full">
@@ -15,7 +15,8 @@ export default function PostsContainer({posts} : PostsContainerInterface) {
       </div>
     </Surface>
   }
-  const userEmail = Cookies.get("user_email");
+  const cookieStore = await cookies();
+  const userEmail = cookieStore.get('user_email')?.value;
 
   return (
     <div className="flex flex-col gap-6">
