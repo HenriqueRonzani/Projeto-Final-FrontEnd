@@ -15,7 +15,7 @@ Promover a troca de conhecimento em programação, facilitar a revisão de exerc
 - Usuário usará esta tela para realizar login na plataforma.
 
 ### Área de Postagens
-- Usuário poderá postar códigos, onde outros usuários podem visualizar e responder com comentários ou melhorias.
+- Usuário poderá criar posts com perguntas, códigos, ou assuntos relacionados à área de desenvolvimento, onde outros usuários podem visualizar e responder com comentários ou melhorias.
 
 ### Área do Usuário
 - Usuário poderá editar seu perfil, que será exibido para outros usuários.
