@@ -132,7 +132,7 @@ export default function CommentComponent({
 
             <button
               ref={buttonRef}
-              className="text-2xl"
+              className="text-2xl text-dark dark:text-light"
               onClick={() => setShowPopover(!showPopover)}
             >
               ...

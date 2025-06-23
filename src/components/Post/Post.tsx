@@ -95,7 +95,7 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
         }
       </div>
 
-      <div className="bg-background rounded-2xl p-4 text-gray-700 dark:text-gray-300">
+      <div className="bg-background rounded-2xl p-4 text-light dark:text-gray-300">
         <p className="whitespace-pre-line">{post.content}</p>
       </div>
 

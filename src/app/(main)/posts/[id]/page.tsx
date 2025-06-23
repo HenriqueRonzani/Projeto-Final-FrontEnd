@@ -53,12 +53,12 @@ export default async function PostPage({ params }: { params: { id: string } }) {
           </div>
 
           <div>
-            <span className={'text-xl font-bold'}>Adicionar comentário</span>
+            <span className={'text-xl font-bold text-dark dark:text-light'}>Adicionar comentário</span>
             <NewCommentForm postId={numericId} />
           </div>
 
           <div>
-            <span className="text-xl font-bold">Comentários</span>
+            <span className="text-xl font-bold text-dark dark:text-light">Comentários</span>
             <div className="flex flex-col gap-3">
               {post.comments && post.comments.length > 0 ? (
                 post.comments.map((comment) => (
@@ -68,7 +68,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                   />
                 ))
               ) : (
-                <p>Nenhum comentário encontrado.</p>
+                <p className='text-dark dark:text-light'>Nenhum comentário encontrado.</p>
               )}
             </div>
           </div>

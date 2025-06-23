@@ -59,7 +59,23 @@ body {
   overflow: hidden;
 }
 
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #4A5568 #1E293B;
+@media (prefers-color-scheme: dark) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #4A5568 #1E293B;
+  }
+
+  /* WebKit-based scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1E293B;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #4A5568;
+    border-radius: 10px;
+  }
 }
