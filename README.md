@@ -1,4 +1,4 @@
-# **Projeto ABP**
+# **Projeto Final FronEnd**
 
 ## Membros
 Henrique da Silva Ronzani, Thiago de Moliner, Fernando Fernandes de Farias e Caio dos Santos Lopes
