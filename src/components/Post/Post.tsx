@@ -3,6 +3,10 @@ import { Post } from "@/types";
 import Link from "next/link";
 import DeletePostModal from "@/components/Post/DeleteModal";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+
+
 
 interface PostComponentProps {
   userEmail: string | undefined;
@@ -75,12 +79,14 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
           post.user?.email === userEmail && (
             <div className='flex flex-row gap-2 items-start'>
               <Link href={`/posts/${post.id}/edit`} className="text-blue-600 hover:underline flex items-center gap-1">
+                <FontAwesomeIcon icon={faEdit} />
                 Editar
               </Link>
-              <span 
+              <span
                 className="text-red-600 hover:underline flex items-center gap-1 cursor-pointer"
                 onClick={openDeleteModal}
               >
+              <FontAwesomeIcon icon={faTrash} />
                 Excluir
               </span>
               <DeletePostModal isOpen={isDeleting} onClose={closeDeleteModal} postId={post.id} />
@@ -102,20 +108,22 @@ export default function PostComponent({ userEmail, post, disableRedirect = false
 
         <div className="flex items-center gap-4 ml-4">
           <div className="flex items-center gap-1">
-            <button 
-              onClick={handleLike} 
+            <button
+              onClick={handleLike}
               className={`hover:underline flex items-center gap-1 ${userVote === 'like' ? 'text-blue-400' : 'text-blue-600'}`}
             >
+              <FontAwesomeIcon icon={faThumbsUp} />
               <span>Like</span>
             </button>
             <span>{Likes}</span>
           </div>
 
           <div className="flex items-center gap-1">
-            <button 
-              onClick={handleDislike} 
+            <button
+              onClick={handleDislike}
               className={`hover:underline flex items-center gap-1 ${userVote === 'dislike' ? 'text-red-400' : 'text-red-600'}`}
             >
+              <FontAwesomeIcon icon={faThumbsDown} />
               <span>Dislike</span>
             </button>
             <span>{Dislikes}</span>
