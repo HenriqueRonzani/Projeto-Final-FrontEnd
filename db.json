@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Teste1",
+      "role": "student",
+      "email": "teste1@teste.com",
+      "password": "123123",
+      "bio": "Bio do Teste1"
+    },
+    {
+      "id": 2,
+      "name": "Teste2",
+      "role": "teacher",
+      "email": "teste2@teste.com",
+      "password": "123123",
+      "bio": "Bio do Teste2"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post 1",
+      "content": "Post 1 aqui",
+      "userId": 1,
+      "publishedAt": "2023-10-01T00:00:00Z"
+    },
+    {
+      "id": 1,
+      "title": "Post 2",
+      "content": "Post 2 aqui",
+      "userId": 8,
+      "publishedAt": "2023-10-01T00:00:00Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": 3,
+      "content": "Teste",
+      "postId": "2",
+      "userId": 8,
+      "publishedAt": "2025-06-14T22:52:56.656Z"
+    },
+    {
+      "id": 4,
+      "content": "Teste",
+      "postId": 4,
+      "userId": 8,
+      "publishedAt": "2025-06-14T22:52:56.656Z"
+    },
+    {
+      "content": "Teste",
+      "postId": 4,
+      "userId": 10,
+      "id": 6,
+      "publishedAt": "2025-06-14T22:52:56.656Z"
+    }
+  ]
+}

@@ -44,9 +44,9 @@ export default function Register() {
   };
 
   return (
-    <div className={"flex items-center justify-center min-h-screen bg-background"}>
-      <div className={"bg-surface p-7 rounded-lg w-4/4 max-w-sm"}>
-        <h2 className={"text-2xl font-bold mb-6 text-center"}>Registrar</h2>
+    <div className={"flex items-center justify-center min-h-screen bg-amber-50 dark:bg-background"}>
+      <div className={"bg-white dark:bg-gray-900 p-7 rounded-lg w-4/4 max-w-sm"}>
+        <h2 className={"text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white"}>Registrar</h2>
 
         <form onSubmit={handleSubmit}>
           <TextInput
@@ -107,7 +107,7 @@ export default function Register() {
           <Button type="submit">Registrar</Button>
         </form>
 
-        <p className="text-sm text-center mt-4">
+        <p className="text-sm text-center mt-4 text-gray-900 dark:text-white">
           Já tem uma conta?{" "}
           <Link href="/login" className="text-blue-600 hover:underline">
             Entrar

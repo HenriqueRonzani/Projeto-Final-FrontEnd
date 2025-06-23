@@ -11,6 +11,8 @@ type TextInputProps = {
   error?: string;
   required?: boolean;
   className?: string;
+  readonly?: boolean;
+  disabled?: boolean;
 };
 
 export default function TextInput({
@@ -22,7 +24,7 @@ export default function TextInput({
   onChange,
   error,
   required = false,
-  className = "",
+  className = ""
 }: TextInputProps) {
   return (
     <div className={"mb-4"}>

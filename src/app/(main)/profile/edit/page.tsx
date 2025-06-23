@@ -101,6 +101,7 @@ export default function EditProfilePage() {
           type="email"
           label="Email"
           value={currentUser?.email || ''}
+          placeholder="Seu email"
           readonly
           disabled
           onChange={() => {
