@@ -26,7 +26,7 @@ export default function TextInput({
 }: TextInputProps) {
   return (
     <div className={"mb-4"}>
-      <label htmlFor={id} className={"block text-sm font-medium mb-1"}>
+      <label htmlFor={id} className="block text-sm font-medium mb-1 text-gray-900 dark:text-white">
         {label}
       </label>
       <input

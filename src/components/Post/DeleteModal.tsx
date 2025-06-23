@@ -26,8 +26,8 @@ export default function DeletePostModal({isOpen, onClose, postId}: DeletePostMod
       isOpen={isOpen}
       onClose={onClose}
     >
-      <div className='flex flex-col gap-5 p-5 items-center bg-surface'>
-        <span>Você tem certeza que deseja excluir este post?</span>
+      <div className='flex flex-col gap-5 p-5 items-center bg-white dark:bg-surface'>
+        <span className='text-gray-900 dark:text-white'>Você tem certeza que deseja excluir este post?</span>
         <div className={'flex flex-row gap-2'}>
           <Button className='px-5' onClick={handleDelete}>Excluir</Button>
           <Button className='px-5' onClick={onClose}>Cancelar</Button>

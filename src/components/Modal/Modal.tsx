@@ -14,11 +14,11 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-amber-50 dark:bg-background"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-md p-6 bg-surface rounded-lg shadow-xl"
+        className="relative w-full max-w-md p-6 bg-white dark:bg-surface rounded-lg shadow-xl"
       >
         {children}
       </div>
