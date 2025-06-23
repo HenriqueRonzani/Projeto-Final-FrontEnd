@@ -64,3 +64,24 @@ export async function registerUser (name: string, role: string, email: string, p
 
   return createUser(name, role, email, password);
 }
+
+export async function getUserById(id: number): Promise<User | null> {
+  const response = await axios.get(`${API_BASE_URL}/users/${id}`);
+  
+  if (response.status !== 200) {
+    throw new Error('Erro ao buscar dados do usuário');
+  }
+
+  return response.data;
+}
+
+export async function updateUser(id: number, data: Partial<User>): Promise<User | null> {
+  // O json-server usa PATCH para atualizações parciais
+  const response = await axios.patch(`${API_BASE_URL}/users/${id}`, data);
+
+  if (response.status !== 200) {
+    throw new Error('Erro ao atualizar o perfil');
+  }
+
+  return response.data;
+}
