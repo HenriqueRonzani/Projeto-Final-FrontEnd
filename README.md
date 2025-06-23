@@ -1,4 +1,4 @@
-# **Projeto Final FronEnd**
+# **Projeto Final FrontEnd** - **Academix**
 
 ## Membros
 Henrique da Silva Ronzani, Thiago de Moliner, Fernando Fernandes de Farias e Caio dos Santos Lopes
