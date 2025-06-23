@@ -3,6 +3,7 @@ import Button from "@/components/Form/Button";
 import {deletePost} from "@/services/postService";
 import Modal from "@/components/Modal/Modal";
 import {useRouter} from "next/navigation";
+import {handleRequestError, handleRequestSuccess} from "@/lib/toast";
 
 interface DeletePostModalProps {
   isOpen: boolean;
@@ -17,16 +18,21 @@ export default function DeletePostModal({isOpen, onClose, postId}: DeletePostMod
   }
 
   const handleDelete = async () => {
-    await deletePost(postId);
-    onClose();
-    router.refresh();
+    try {
+      await deletePost(postId);
+      handleRequestSuccess('Post excluído com sucesso!');
+      onClose();
+      router.refresh();
+    } catch (error) {
+      handleRequestError(error);
+    }
   }
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
     >
-      <div className='flex flex-col gap-5 p-5 items-center bg-white dark:bg-surface'>
+      <div className='flex flex-col gap-5 p-5 items-center bg-white dark:bg-slate-900'>
         <span className='text-gray-900 dark:text-white'>Você tem certeza que deseja excluir este post?</span>
         <div className={'flex flex-row gap-2'}>
           <Button className='px-5' onClick={handleDelete}>Excluir</Button>
